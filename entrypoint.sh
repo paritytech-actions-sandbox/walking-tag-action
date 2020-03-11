@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eux
 
-git_setup ( ) {
+git_setup () {
   cat <<- EOF > "$HOME/.netrc"
         machine github.com
         login $GITHUB_ACTOR
@@ -21,7 +21,7 @@ echo "Setting up git machine..."
 git_setup
 
 echo "Forcing tag update..."
-git tag -a "${INPUT_TAG_NAME}" -m "${INPUT_TAG_MESSAGE}" "${GITHUB_SHA}" -f
+git tag -f -a "${INPUT_TAG_NAME}" -m "${INPUT_TAG_MESSAGE}" "${GITHUB_SHA}"
 
 echo "Forcing tag push..."
 git push -f origin "refs/tags/${INPUT_TAG_NAME}"
