@@ -1,5 +1,5 @@
 #!/bin/sh
-set -eux
+set -eu
 
 git_setup () {
   cat <<- EOF > "$HOME/.netrc"
